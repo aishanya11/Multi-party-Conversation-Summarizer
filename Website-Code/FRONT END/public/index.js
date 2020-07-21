@@ -1,4 +1,5 @@
-$('#webcamm').on('click',function(){
+$('#chatLogInp').on('click',function(){
+  //document.getElementById("myFile").value
   $.get({url:'/abc',success:function(){
 	alert('recording done');
     window.location='/';

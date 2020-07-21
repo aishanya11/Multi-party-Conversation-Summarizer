@@ -6,7 +6,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <style>
-      #webcamm{
+      #chatLogInp{
         margin-top: 10vh;
         margin-left: 40vw;
         width: 20%;
@@ -26,9 +26,14 @@
   </head>
 
   <body>
-<center><h1>URBAN SOUND CLASSIFICATION </h1></center>
-<center><h4>Input any urban sound to identify it!</h4></center>
-    <a href="#" class="btn btn-primary btn-lg active" id="webcamm" role="button" aria-pressed="true">Input</a>
+<center><h1>MULTI PARTY CONVERSATION SUMMARIZER </h1></center>
+<center><h4>Input any chat log to summarize it!</h4></center>
+<form enctype="multipart/form-data" action="/upload-avatar" method="post">
+  <input type="file" id="myFilee" name="avatar">
+  <input type="submit">
+</form>
+
+    <a href="#" class="btn btn-primary btn-lg active" id="chatLogInp" role="button" aria-pressed="true">Input</a>
 
   
 
