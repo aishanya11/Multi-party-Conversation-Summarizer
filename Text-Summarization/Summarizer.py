@@ -431,10 +431,10 @@ def executeForAFile(filename,output_file_name,humanExtractedYesOrNo_files,humanE
     # print(extracted_sentences)
 
     finalText = ""
-    #print("\nExtracted Final Text : ")
-    #for i in range(len(extracted_sentences)):
-    #    print(extracted_sentences[i][0])
-    #    finalText = finalText + extracted_sentences[i][0]
+    print("\nExtracted Final Text : ")
+    for i in range(len(extracted_sentences)):
+        print(extracted_sentences[i][0])
+        finalText = finalText + extracted_sentences[i][0]
     
     
 
