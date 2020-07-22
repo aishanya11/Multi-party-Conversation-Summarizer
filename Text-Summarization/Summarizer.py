@@ -488,10 +488,10 @@ def executeForAFile(filename,output_file_name,humanExtractedYesOrNo_files,humanE
 # humanExtractedYesOrNo_files.append("./gdrive/My Drive/TextSummarizer/list8")
 # # humanExtractedYesOrNo_files.append("list9")
 
-filename = "/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Text-Summarization/temp-article.txt"
-output_file = "/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Text-Summarization/temp-output.txt"
-humanExtractedYesOrNo_files = ""
-executeForAFile(filename,output_file,humanExtractedYesOrNo_files,False)
+# filename = "/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Text-Summarization/temp-article.txt"
+# output_file = "/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Text-Summarization/temp-output.txt"
+# humanExtractedYesOrNo_files = ""
+# executeForAFile(filename,output_file,humanExtractedYesOrNo_files,False)
 
 # for x in range(len(filenames)):
 #     executeForAFile(filenames[x],output_file_list[x],humanExtractedYesOrNo_files[x],True)
@@ -511,3 +511,20 @@ executeForAFile(filename,output_file,humanExtractedYesOrNo_files,False)
 # for item in Fscore_values:
 #     print(item, end="\n", file=file)
 # file.close()
+
+def main(n_topics):
+    filenames = []
+    output_file_list = []
+    for x in range(n_topics):
+        filenames.append("/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Topic-Detection/Topics/topic-"+x+".txt")
+        output_file_list("/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Text-Summarization/output-"+x+".txt")
+
+    
+
+    humanExtractedYesOrNo_files = ""
+    for x in range(n_topics):
+        executeForAFile(filenames[x],output_file_list[x],humanExtractedYesOrNo_files,False)
+
+
+if __name__ == '__main__': 
+    main(sys.argv[1])
