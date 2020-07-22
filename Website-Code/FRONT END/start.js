@@ -82,17 +82,24 @@ function callName(req, res) {
 
 app.get('/def', callName2);
 
-function callName2(req, res) {
+async function callName2(req, res) {
 	//console.log(req);
     //console.log(res);
     var spawn = require("child_process").spawn;
 
-  
-    var process = spawn('python',["./script_run.py"] );
-
+    const process1 = spawn('source', ["/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/my_virtual_env/bin/activate"]);
+    const process = spawn('python',["/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Text-Summarization/Summarizer.py"] );
+    const process2 = spawn('deactivate');
+    console.log(process.pid);
     // Takes stdout data from script which executed
     // with arguments and send this data to res object
+    process.stderr.on('data', function(data) {
+        console.log(data.toString());
+		
+    } )
+
     process.stdout.on('data', function(data) {
+        console.log("yooooooo");
 		data = data.toString().split('%');
 		data.pop();
         res.render('def',{arr:data});

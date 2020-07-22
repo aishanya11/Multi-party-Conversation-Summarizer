@@ -322,13 +322,14 @@ def executeForAFile(filename,output_file_name,humanExtractedYesOrNo_files,humanE
     # file = open('./gdrive/My Drive/TextSummarizer/article1','r')
     text = file.read()
     paragraphs = para_reader.show_paragraphs(filename)
-    print("Number of paras : %d",len(paragraphs))
+    # print("Number of paras : %d",len(paragraphs))
     sentences = split_into_sentences(text)
     text_len = len(sentences)
     humanYesOrNo = []
     
     if humanExtractGiven == False :
-        humanYesOrNo = askHuman.humanGenerator(text)
+        # humanYesOrNo = askHuman.humanGenerator(text)
+        x = 0
     else:
         
         with open(humanExtractedYesOrNo_files) as fileobj:
@@ -401,9 +402,9 @@ def executeForAFile(filename,output_file_name,humanExtractedYesOrNo_files,humanE
     # length_to_be_extracted = len(enhanced_feature_sum)/2 amritha
     length_to_be_extracted = int(len(enhanced_feature_sum)/2)
 
-    print("\n\nThe text is : \n\n")
-    for x in range(len(sentences)):
-        print(sentences[x])
+    # print("\n\nThe text is : \n\n")
+    # for x in range(len(sentences)):
+    #     print(sentences[x])
 
     # print("\n\n\nExtracted sentences : \n\n\n")
     extracted_sentences = []
@@ -419,28 +420,32 @@ def executeForAFile(filename,output_file_name,humanExtractedYesOrNo_files,humanE
 
     autoYesOrNo = askHuman.automaticGenerator(indeces_extracted,text_len)
     # Supervised learning
-    precision, recall, Fscore = askHuman.compareHumanAndAutomatic(humanYesOrNo,autoYesOrNo)
+    # precision, recall, Fscore = askHuman.compareHumanAndAutomatic(humanYesOrNo,autoYesOrNo)
 
-    precision_values.append(precision)
-    recall_values.append(recall)
-    Fscore_values.append(Fscore)
+    # precision_values.append(precision)
+    # recall_values.append(recall)
+    # Fscore_values.append(Fscore)
 
     # print(extracted_sentences)
     extracted_sentences.sort(key=lambda x: x[1])
     # print(extracted_sentences)
 
     finalText = ""
-    print("\n\n\nExtracted Final Text : \n\n\n")
-    for i in range(len(extracted_sentences)):
-        print("\n"+extracted_sentences[i][0])
-        finalText = finalText + extracted_sentences[i][0]
+    #print("\nExtracted Final Text : ")
+    #for i in range(len(extracted_sentences)):
+    #    print(extracted_sentences[i][0])
+    #    finalText = finalText + extracted_sentences[i][0]
+    
+    
 
 
     # print("Precision : " + repr(precision) +"\nRecall : " + repr(recall) + "\nFscore : "+ repr(Fscore))
-    # file = open(output_file_name, "w") amritha
-    # file.write(finalText) amritha
-    # file.close() amritha
+    file = open(output_file_name, "w") 
+    file.write(finalText)
+    print("WORK DONE")
+    file.close()
 
+    
     # file_n = open(humanExtractedYesOrNo_files,"w")
     # for item in autoYesOrNo:
     #     print(item, end="", file=file_n)
@@ -449,41 +454,44 @@ def executeForAFile(filename,output_file_name,humanExtractedYesOrNo_files,humanE
 
 
 
-filename = "./gdrive/My Drive/TextSummarizer/article1"
-filenames = []
-filenames.append("./gdrive/My Drive/TextSummarizer/article1")
-filenames.append("./gdrive/My Drive/TextSummarizer/article2")
-filenames.append("./gdrive/My Drive/TextSummarizer/article3")
-filenames.append("./gdrive/My Drive/TextSummarizer/article4")
-filenames.append("./gdrive/My Drive/TextSummarizer/article5")
-filenames.append("./gdrive/My Drive/TextSummarizer/article6")
-filenames.append("./gdrive/My Drive/TextSummarizer/article7")
-filenames.append("./gdrive/My Drive/TextSummarizer/article8")
-# filenames.append("article9")
+# filename = "./gdrive/My Drive/TextSummarizer/article1"
+# filenames = []
+# filenames.append("./gdrive/My Drive/TextSummarizer/article1")
+# filenames.append("./gdrive/My Drive/TextSummarizer/article2")
+# filenames.append("./gdrive/My Drive/TextSummarizer/article3")
+# filenames.append("./gdrive/My Drive/TextSummarizer/article4")
+# filenames.append("./gdrive/My Drive/TextSummarizer/article5")
+# filenames.append("./gdrive/My Drive/TextSummarizer/article6")
+# filenames.append("./gdrive/My Drive/TextSummarizer/article7")
+# filenames.append("./gdrive/My Drive/TextSummarizer/article8")
+# # filenames.append("article9")
 
-output_file_list = []
-output_file_list.append("./gdrive/My Drive/TextSummarizer/op1")
-output_file_list.append("./gdrive/My Drive/TextSummarizer/op2")
-output_file_list.append("./gdrive/My Drive/TextSummarizer/op3")
-output_file_list.append("./gdrive/My Drive/TextSummarizer/op4")
-output_file_list.append("./gdrive/My Drive/TextSummarizer/op5")
-output_file_list.append("./gdrive/My Drive/TextSummarizer/op6")
-output_file_list.append("./gdrive/My Drive/TextSummarizer/op7")
-output_file_list.append("./gdrive/My Drive/TextSummarizer/op8")
-# output_file_list.append("op9")
+# output_file_list = []
+# output_file_list.append("./gdrive/My Drive/TextSummarizer/op1")
+# output_file_list.append("./gdrive/My Drive/TextSummarizer/op2")
+# output_file_list.append("./gdrive/My Drive/TextSummarizer/op3")
+# output_file_list.append("./gdrive/My Drive/TextSummarizer/op4")
+# output_file_list.append("./gdrive/My Drive/TextSummarizer/op5")
+# output_file_list.append("./gdrive/My Drive/TextSummarizer/op6")
+# output_file_list.append("./gdrive/My Drive/TextSummarizer/op7")
+# output_file_list.append("./gdrive/My Drive/TextSummarizer/op8")
+# # output_file_list.append("op9")
 
-humanExtractedYesOrNo_files = []
-humanExtractedYesOrNo_files.append("./gdrive/My Drive/TextSummarizer/list1")
-humanExtractedYesOrNo_files.append("./gdrive/My Drive/TextSummarizer/list2")
-humanExtractedYesOrNo_files.append("./gdrive/My Drive/TextSummarizer/list3")
-humanExtractedYesOrNo_files.append("./gdrive/My Drive/TextSummarizer/list4")
-humanExtractedYesOrNo_files.append("./gdrive/My Drive/TextSummarizer/list5")
-humanExtractedYesOrNo_files.append("./gdrive/My Drive/TextSummarizer/list6")
-humanExtractedYesOrNo_files.append("./gdrive/My Drive/TextSummarizer/list7")
-humanExtractedYesOrNo_files.append("./gdrive/My Drive/TextSummarizer/list8")
-# humanExtractedYesOrNo_files.append("list9")
+# humanExtractedYesOrNo_files = []
+# humanExtractedYesOrNo_files.append("./gdrive/My Drive/TextSummarizer/list1")
+# humanExtractedYesOrNo_files.append("./gdrive/My Drive/TextSummarizer/list2")
+# humanExtractedYesOrNo_files.append("./gdrive/My Drive/TextSummarizer/list3")
+# humanExtractedYesOrNo_files.append("./gdrive/My Drive/TextSummarizer/list4")
+# humanExtractedYesOrNo_files.append("./gdrive/My Drive/TextSummarizer/list5")
+# humanExtractedYesOrNo_files.append("./gdrive/My Drive/TextSummarizer/list6")
+# humanExtractedYesOrNo_files.append("./gdrive/My Drive/TextSummarizer/list7")
+# humanExtractedYesOrNo_files.append("./gdrive/My Drive/TextSummarizer/list8")
+# # humanExtractedYesOrNo_files.append("list9")
 
-executeForAFile(filenames[0],output_file_list[0],humanExtractedYesOrNo_files[0],True)
+filename = "./temp-article.txt"
+output_file = "./temp-output.txt"
+humanExtractedYesOrNo_files = ""
+executeForAFile(filename,output_file,humanExtractedYesOrNo_files,False)
 
 # for x in range(len(filenames)):
 #     executeForAFile(filenames[x],output_file_list[x],humanExtractedYesOrNo_files[x],True)
