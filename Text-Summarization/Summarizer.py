@@ -442,7 +442,7 @@ def executeForAFile(filename,output_file_name,humanExtractedYesOrNo_files,humanE
     # print("Precision : " + repr(precision) +"\nRecall : " + repr(recall) + "\nFscore : "+ repr(Fscore))
     file = open(output_file_name, "w") 
     file.write(finalText)
-    print("WORK DONE")
+    print(finalText)
     file.close()
 
     
@@ -488,8 +488,8 @@ def executeForAFile(filename,output_file_name,humanExtractedYesOrNo_files,humanE
 # humanExtractedYesOrNo_files.append("./gdrive/My Drive/TextSummarizer/list8")
 # # humanExtractedYesOrNo_files.append("list9")
 
-filename = "./temp-article.txt"
-output_file = "./temp-output.txt"
+filename = "/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Text-Summarization/temp-article.txt"
+output_file = "/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Text-Summarization/temp-output.txt"
 humanExtractedYesOrNo_files = ""
 executeForAFile(filename,output_file,humanExtractedYesOrNo_files,False)
 
