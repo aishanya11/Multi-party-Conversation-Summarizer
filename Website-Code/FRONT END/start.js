@@ -76,6 +76,7 @@ app.post('/upload-avatar', async (req, res) => {
             //Use the mv() method to place the file in upload directory (i.e. "uploads")
             
             console.log('uploaded file');
+           
             //send response
             
         }

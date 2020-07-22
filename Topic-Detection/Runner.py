@@ -15,7 +15,7 @@ class TestRunner:
         self.messages = parser.getMessages()
         self.tokenizer = MessageTokenizer()
         windowSize = 3
-        cosineSimilarityThreshold = 0.6
+        cosineSimilarityThreshold = 0.2
         segmenter = ConversationSegmenter(
             self.messages, windowSize, cosineSimilarityThreshold, self.tokenizer)
         topics = segmenter.segment()

@@ -24,3 +24,4 @@ for i in range(1,len(msgs)+1):
     jsonn["type"][str(i)] = "message"  
 with open(output_json, 'w') as json_file:
   json.dump(jsonn, json_file)
+print("done")
