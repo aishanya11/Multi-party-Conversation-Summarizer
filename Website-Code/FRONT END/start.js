@@ -8,6 +8,8 @@ const _ = require('lodash');
 
 var app = express();
 
+var no_topics_input_chat = 0;
+
 app.use(fileUpload({
     createParentPath: true
 }));
@@ -109,7 +111,7 @@ async function callName2(req, res) {
     var spawn = require("child_process").spawn;
 
     //const process1 = spawn('source', ["/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/my_virtual_env/bin/activate"]);
-    const process = spawn('python',["/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Text-Summarization/Summarizer.py"] );
+    const process = spawn('python',["/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Text-Summarization/Summarizer.py", "no_topics_input_chat"] );
     //const process2 = spawn('deactivate');
     console.log(process.pid);
     // Takes stdout data from script which executed
@@ -129,10 +131,24 @@ async function callName2(req, res) {
 
 app.get('/model', callName3);
 
-function callName3(req, res) {
+async function callName3(req, res) {
+    console.log("model route pe aagaye hai");
     var spawn = require("child_process").spawn;
-    const process = spawn('python',["/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Topic-Detection/Runner.py", "/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Website-Code/FRONT END/chats.json"] );
-    res.render('model');
+    const process = spawn('python',["/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Topic-Detection/Runner.py","/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Website-Code/chatsToJson/chats2.json"] );
+    console.log(process.pid);
+    process.stderr.on('data', function(data) {
+        console.log(data.toString());
+		
+    } )
+
+    process.stdout.on('data', function(data) {
+        console.log("runner.py script chal gayi");
+		data = data.toString();
+        console.log("no. of topics identified:"); 
+        console.log(data);
+        no_topics_input_chat = data;
+    } )
+    //res.render('model');
 }
 
 
