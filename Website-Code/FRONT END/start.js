@@ -47,7 +47,8 @@ app.post('/upload-avatar', async (req, res) => {
             avatar.mv('./uploads/' + avatar.name);
             input_file = avatar.name
             var spawn = require("child_process").spawn;
-            var process = spawn('python',["/Users/riyak/STUDY/BTP-2/git/Multi-party-Conversation-Summarizer/Website-Code/chatsToJson/txt-json.py", input_file] );
+            // var process = spawn('python',["/Users/riyak/STUDY/BTP-2/git/Multi-party-Conversation-Summarizer/Website-Code/chatsToJson/txt-json.py", input_file] );
+            var process = spawn('python',["../../Website-Code/chatsToJson/txt-json.py", input_file] );
             process.stderr.on('data', function(data) {
                 console.log(data.toString());
                 res.send({
@@ -62,7 +63,7 @@ app.post('/upload-avatar', async (req, res) => {
             } )
         
             process.stdout.on('data', function(data) {
-                console.log("yooooooo");
+                console.log("TEXT TO JSON CONVERSION DONE!!");
                 res.send({
                     status: true,
                     message: 'File is uploaded',
@@ -112,8 +113,8 @@ async function callName2(req, res) {
     var spawn = require("child_process").spawn;
 
     //const process1 = spawn('source', ["/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/my_virtual_env/bin/activate"]);
-    const process = spawn('python',["/Users/riyak/STUDY/BTP-2/git/Multi-party-Conversation-Summarizer/Text-Summarization/Summarizer.py", no_topics_input_chat] );
-    //const process2 = spawn('deactivate');
+    // const process = spawn('python',["/Users/riyak/STUDY/BTP-2/git/Multi-party-Conversation-Summarizer/Text-Summarization/Summarizer.py", no_topics_input_chat] );
+    const process = spawn('python',["../../Text-Summarization/Summarizer.py", no_topics_input_chat] );
     console.log(process.pid);
     // Takes stdout data from script which executed
     // with arguments and send this data to res object
@@ -133,7 +134,7 @@ app.get('/model', callName3);
 async function callName3(req, res) {
     console.log("model route pe aagaye hai");
     var spawn = require("child_process").spawn;
-    const process = spawn('python',["/Users/riyak/STUDY/BTP-2/git/Multi-party-Conversation-Summarizer/Topic-Detection/Runner.py","/Users/riyak/STUDY/BTP-2/git/Multi-party-Conversation-Summarizer/Website-Code/chatsToJson/chats2.json"] );
+    const process = spawn('python',["../../Topic-Detection/Runner.py","../../Website-Code/chatsToJson/chats2.json"] );
     console.log(process.pid);
     process.stderr.on('data', function(data) {
         console.log(data.toString());
@@ -141,7 +142,7 @@ async function callName3(req, res) {
     } )
 
     process.stdout.on('data', function(data) {
-        console.log("runner.py script chal gayi");
+        console.log("TOPIC DETECTION DONE!!");
 		data = data.toString();
         console.log("no. of topics identified:"); 
         console.log(data);

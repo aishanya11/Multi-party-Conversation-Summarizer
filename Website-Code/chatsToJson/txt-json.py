@@ -2,8 +2,8 @@ import json
 import sys
 
 def main(input_file):
-  txt_file = "/Users/riyak/STUDY/BTP-2/git/Multi-party-Conversation-Summarizer/Website-Code/FRONT END/uploads/" + input_file 
-  output_json = "/Users/riyak/STUDY/BTP-2/git/Multi-party-Conversation-Summarizer/Website-Code/chatsToJson/chats2.json"
+  txt_file = "../../Website-Code/FRONT END/uploads/" + input_file 
+  output_json = "../../Website-Code/chatsToJson/chats2.json"
   f = open(txt_file,"r+")
   chats = f.readlines()[1:]
   # print(chats[0])

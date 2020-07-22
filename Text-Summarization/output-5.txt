@@ -1,0 +1,1 @@
+One classical type of artificial neural network is the recurrent Hopfield network.The concept of an artificial neural network appears to have first been proposed by Alan Turing in his 1948 paper Intelligent Machinery.The utility of artificial neural network models lies in the fact that they can be used to infer a function from observations and also to use it.
