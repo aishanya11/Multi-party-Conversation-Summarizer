@@ -28,5 +28,5 @@ def ner(sample):
 
         entity_names.extend(extract_entity_names(tree))
    # print set(entity_names)
-    print (entity_names)
+    # print (entity_names)
     return len(entity_names)

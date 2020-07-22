@@ -186,7 +186,7 @@ def load_data(featureMat_normed):
     # Download the MNIST dataset if it is not present
     target = numpy.zeros(featureMat_normed.shape[0])
     train_set = (featureMat_normed, target)
-    print(train_set)
+    # print(train_set)
     test_set = train_set
     valid_set = train_set
     return train_set, valid_set, test_set
@@ -268,7 +268,7 @@ def sgd_optimization_mnist(learning_rate=0.13, n_epochs=1000,
     ######################
     # BUILD ACTUAL MODEL #
     ######################
-    print('... building the model')
+    # print('... building the model')
 
     # allocate symbolic variables for the data
     index = T.lscalar()  # index to a [mini]batch
@@ -334,7 +334,7 @@ def sgd_optimization_mnist(learning_rate=0.13, n_epochs=1000,
     ###############
     # TRAIN MODEL #
     ###############
-    print('... training the model')
+    # print('... training the model')
     # early-stopping parameters
     patience = 5000  # look as this many examples regardless
     patience_increase = 2  # wait this much longer when a new best is
@@ -371,15 +371,15 @@ def sgd_optimization_mnist(learning_rate=0.13, n_epochs=1000,
                                      for i in range(n_valid_batches)]
                 this_validation_loss = numpy.mean(validation_losses)
 
-                print(
-                    'epoch %i, minibatch %i/%i, validation error %f %%' %
-                    (
-                        epoch,
-                        minibatch_index + 1,
-                        n_train_batches,
-                        this_validation_loss * 100.
-                    )
-                )
+                # # print(
+                #     'epoch %i, minibatch %i/%i, validation error %f %%' %
+                #     (
+                #         epoch,
+                #         minibatch_index + 1,
+                #         n_train_batches,
+                #         this_validation_loss * 100.
+                #     )
+                # )
 
                 # if we got the best validation score until now
                 if this_validation_loss < best_validation_loss:
@@ -395,18 +395,18 @@ def sgd_optimization_mnist(learning_rate=0.13, n_epochs=1000,
                                    for i in range(n_test_batches)]
                     test_score = numpy.mean(test_losses)
 
-                    print(
-                        (
-                            '     epoch %i, minibatch %i/%i, test error of'
-                            ' best model %f %%'
-                        ) %
-                        (
-                            epoch,
-                            minibatch_index + 1,
-                            n_train_batches,
-                            test_score * 100.
-                        )
-                    )
+                    # # print(
+                    #     (
+                    #         '     epoch %i, minibatch %i/%i, test error of'
+                    #         ' best model %f %%'
+                    #     ) %
+                    #     (
+                    #         epoch,
+                    #         minibatch_index + 1,
+                    #         n_train_batches,
+                    #         test_score * 100.
+                    #     )
+                    # )
 
                     # save the best model
                     with open('best_model.pkl', 'wb') as f:
@@ -418,18 +418,18 @@ def sgd_optimization_mnist(learning_rate=0.13, n_epochs=1000,
 
     #change thissssssssssssssssss
     end_time = timeit.default_timer()
-    print(
-        (
-            'Optimization complete with best validation score of %f %%,'
-            'with test performance %f %%'
-        )
-        % (best_validation_loss * 100., test_score * 100.)
-    )
-    print('The code run for %d epochs, with %f epochs/sec' % (
-        epoch, 1. * epoch / (end_time - start_time)))
-    print(('The code for file ' +
-           os.path.split(__file__)[1] +
-           ' ran for %.1fs' % ((end_time - start_time))), file=sys.stderr)
+    # # print(
+    #     (
+    #         'Optimization complete with best validation score of %f %%,'
+    #         'with test performance %f %%'
+    #     )
+    #     % (best_validation_loss * 100., test_score * 100.)
+    # )
+    # print('The code run for %d epochs, with %f epochs/sec' % (
+        # epoch, 1. * epoch / (end_time - start_time)))
+    # # print(('The code for file ' +
+    #        os.path.split(__file__)[1] +
+    #        ' ran for %.1fs' % ((end_time - start_time))), file=sys.stderr)
 
 #change thissssssssssssssssss
 def predict():
@@ -453,8 +453,8 @@ def predict():
     test_set_x = test_set_x.get_value()
 
     predicted_values = predict_model(test_set_x[:10])
-    print("Predicted values for the first 10 examples in test set:")
-    print(predicted_values)
+    # print("Predicted values for the first 10 examples in test set:")
+    # print(predicted_values)
 
 
 if __name__ == '__main__':

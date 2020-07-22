@@ -259,7 +259,7 @@ def thematicFeature(tokenized_sentences) :
 				#print(word)
 				word_list.append(word)
 			except Exception as e:
-				print("ERR")
+				x=0
 	counts = Counter(word_list)
 	number_of_words = len(counts)
 	most_common = counts.most_common(10)
@@ -277,7 +277,7 @@ def thematicFeature(tokenized_sentences) :
 					score = score + 1
 				#print(word)
 			except Exception as e:
-				print("ERR")
+				x=0
 		score = 1.0*score/(number_of_words)
 		scores.append(score)
 	return scores
@@ -431,9 +431,9 @@ def executeForAFile(filename,output_file_name,humanExtractedYesOrNo_files,humanE
     # print(extracted_sentences)
 
     finalText = ""
-    print("\nExtracted Final Text : ")
+    # print("\nExtracted Final Text : ")
     for i in range(len(extracted_sentences)):
-        print(extracted_sentences[i][0])
+        # print(extracted_sentences[i][0])
         finalText = finalText + extracted_sentences[i][0]
     
     
@@ -442,7 +442,7 @@ def executeForAFile(filename,output_file_name,humanExtractedYesOrNo_files,humanE
     # print("Precision : " + repr(precision) +"\nRecall : " + repr(recall) + "\nFscore : "+ repr(Fscore))
     file = open(output_file_name, "w") 
     file.write(finalText)
-    print(finalText)
+    # print(finalText)
     file.close()
 
     
@@ -515,16 +515,17 @@ def executeForAFile(filename,output_file_name,humanExtractedYesOrNo_files,humanE
 def main(n_topics):
     filenames = []
     output_file_list = []
+    n_topics = int(n_topics)
     for x in range(n_topics):
-        filenames.append("/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Topic-Detection/Topics/topic-"+x+".txt")
-        output_file_list("/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Text-Summarization/output-"+x+".txt")
+        filenames.append("/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Topic-Detection/Topics/topic-"+str(x)+".txt")
+        output_file_list.append("/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Text-Summarization/output-"+str(x)+".txt")
 
-    
+    # print(filenames)
 
     humanExtractedYesOrNo_files = ""
-    for x in range(n_topics):
-        executeForAFile(filenames[x],output_file_list[x],humanExtractedYesOrNo_files,False)
-
+    # for x in range(n_topics):
+    executeForAFile(filenames[0],output_file_list[0],humanExtractedYesOrNo_files,False)
+    executeForAFile(filenames[n_topics-1],output_file_list[1],humanExtractedYesOrNo_files,False)
 
 if __name__ == '__main__': 
     main(sys.argv[1])

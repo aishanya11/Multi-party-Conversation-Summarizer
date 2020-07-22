@@ -58,13 +58,13 @@ def split_into_sentences(text):
 
 def humanGenerator(text) :
 	sentences = split_into_sentences(text)
-	print(len(sentences))
+	# print(len(sentences))
 	yesOrNo = []
-	print("\nThe sentences are : ")
-	print(sentences)
-	print("Input 1 to include and 0 to exclude : \n" )
+	# print("\nThe sentences are : ")
+	# print(sentences)
+	# print("Input 1 to include and 0 to exclude : \n" )
 	for x in range(len(sentences)):
-		print(sentences[x])
+		# print(sentences[x])
 		ans = input("1 or 0 : ")
 		yesOrNo.append(ans)
 

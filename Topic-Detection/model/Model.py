@@ -28,7 +28,7 @@ class Model:
             startB = 0
             tokensA = fullTokensA[int(startA):int(startA + width)]
             while startB < len(fullTokensB):
-                print(" 1 :",startB," 2 : ",width)
+                # print(" 1 :",startB," 2 : ",width)
                 
                 tokensB = fullTokensB[int(startB):int((startB + width))]
                 cosine = self.innerModel.n_similarity(tokensA, tokensB) * decay

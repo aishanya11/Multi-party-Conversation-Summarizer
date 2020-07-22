@@ -111,7 +111,7 @@ async function callName2(req, res) {
     var spawn = require("child_process").spawn;
 
     //const process1 = spawn('source', ["/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/my_virtual_env/bin/activate"]);
-    const process = spawn('python',["/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Text-Summarization/Summarizer.py", "no_topics_input_chat"] );
+    const process = spawn('python',["/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Text-Summarization/Summarizer.py", no_topics_input_chat] );
     //const process2 = spawn('deactivate');
     console.log(process.pid);
     // Takes stdout data from script which executed
@@ -121,12 +121,8 @@ async function callName2(req, res) {
 		
     } )
 
-    process.stdout.on('data', function(data) {
-        console.log("yooooooobabe");
-		data = data.toString();
-        console.log(data);
-        res.render('def',{arr:data});
-    } )
+    res.render('model');
+    
 }
 
 app.get('/model', callName3);
@@ -146,7 +142,7 @@ async function callName3(req, res) {
 		data = data.toString();
         console.log("no. of topics identified:"); 
         console.log(data);
-        no_topics_input_chat = data;
+        no_topics_input_chat = Number(data);
     } )
     //res.render('model');
 }
