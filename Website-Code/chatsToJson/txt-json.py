@@ -1,6 +1,6 @@
 import json
 txt_file = "/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Website-Code/FRONT END/uploads/sample.txt" 
-output_json = "./chats.json"
+output_json = "/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Website-Code/chatsToJson/chats2.json"
 f = open(txt_file,"r+")
 chats = f.readlines()[1:]
 print(chats[0])
@@ -22,5 +22,5 @@ for i in range(1,len(msgs)+1):
     jsonn["user"][str(i)] = users[i-1]
     jsonn["ts"][str(i)] = timestamps[i-1]
     jsonn["type"][str(i)] = "message"  
-with open('chats.json', 'w') as json_file:
+with open(output_json, 'w') as json_file:
   json.dump(jsonn, json_file)

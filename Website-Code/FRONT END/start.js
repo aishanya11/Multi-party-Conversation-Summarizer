@@ -130,8 +130,8 @@ async function callName2(req, res) {
 app.get('/model', callName3);
 
 function callName3(req, res) {
-
-    
+    var spawn = require("child_process").spawn;
+    const process = spawn('python',["/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Topic-Detection/Runner.py", "/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Website-Code/FRONT END/chats.json"] );
     res.render('model');
 }
 
