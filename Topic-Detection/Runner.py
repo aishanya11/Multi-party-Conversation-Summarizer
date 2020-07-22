@@ -15,7 +15,7 @@ class TestRunner:
         self.messages = parser.getMessages()
         self.tokenizer = MessageTokenizer()
         windowSize = 3
-        cosineSimilarityThreshold = 0.2
+        cosineSimilarityThreshold = 0.9
         segmenter = ConversationSegmenter(
             self.messages, windowSize, cosineSimilarityThreshold, self.tokenizer)
         topics = segmenter.segment()
@@ -23,7 +23,7 @@ class TestRunner:
         
 
     def report(self, topics):
-        files = glob.glob('/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Topic-Detection/Topics/*.txt')
+        files = glob.glob('/Users/riyak/STUDY/BTP-2/git/Multi-party-Conversation-Summarizer/Topic-Detection/Topics/*.txt')
         for f in files:
             os.remove(f)
         idGroups = []
@@ -45,7 +45,7 @@ class TestRunner:
         # print("============================= short =============================")
         for ind, topic in enumerate(topics):
             # print("== Topic ==")
-            arg1 = "/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Topic-Detection/Topics/topic-" + str(ind) + ".txt"
+            arg1 = "/Users/riyak/STUDY/BTP-2/git/Multi-party-Conversation-Summarizer/Topic-Detection/Topics/topic-" + str(ind) + ".txt"
             file = open(arg1,"w")
             for message in topic.getMessages():
                 # print(str(message.getID()) , ":\t" , message.getText().encode('utf-8'))

@@ -517,8 +517,8 @@ def main(n_topics):
     output_file_list = []
     n_topics = int(n_topics)
     for x in range(n_topics):
-        filenames.append("/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Topic-Detection/Topics/topic-"+str(x)+".txt")
-        output_file_list.append("/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Text-Summarization/output-"+str(x)+".txt")
+        filenames.append("/Users/riyak/STUDY/BTP-2/git/Multi-party-Conversation-Summarizer/Topic-Detection/Topics/topic-"+str(x)+".txt")
+        output_file_list.append("/Users/riyak/STUDY/BTP-2/git/Multi-party-Conversation-Summarizer/Text-Summarization/output-"+str(x)+".txt")
 
     # print(filenames)
 

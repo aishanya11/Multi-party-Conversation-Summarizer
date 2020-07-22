@@ -45,9 +45,9 @@ app.post('/upload-avatar', async (req, res) => {
             let avatar = req.files.avatar;
             //let whatsappChat = avatar.data.toString();
             avatar.mv('./uploads/' + avatar.name);
-
+            input_file = avatar.name
             var spawn = require("child_process").spawn;
-            var process = spawn('python',["/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Website-Code/chatsToJson/txt-json.py"] );
+            var process = spawn('python',["/Users/riyak/STUDY/BTP-2/git/Multi-party-Conversation-Summarizer/Website-Code/chatsToJson/txt-json.py", input_file] );
             process.stderr.on('data', function(data) {
                 console.log(data.toString());
                 res.send({
@@ -112,7 +112,7 @@ async function callName2(req, res) {
     var spawn = require("child_process").spawn;
 
     //const process1 = spawn('source', ["/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/my_virtual_env/bin/activate"]);
-    const process = spawn('python',["/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Text-Summarization/Summarizer.py", no_topics_input_chat] );
+    const process = spawn('python',["/Users/riyak/STUDY/BTP-2/git/Multi-party-Conversation-Summarizer/Text-Summarization/Summarizer.py", no_topics_input_chat] );
     //const process2 = spawn('deactivate');
     console.log(process.pid);
     // Takes stdout data from script which executed
@@ -133,7 +133,7 @@ app.get('/model', callName3);
 async function callName3(req, res) {
     console.log("model route pe aagaye hai");
     var spawn = require("child_process").spawn;
-    const process = spawn('python',["/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Topic-Detection/Runner.py","/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Website-Code/chatsToJson/chats2.json"] );
+    const process = spawn('python',["/Users/riyak/STUDY/BTP-2/git/Multi-party-Conversation-Summarizer/Topic-Detection/Runner.py","/Users/riyak/STUDY/BTP-2/git/Multi-party-Conversation-Summarizer/Website-Code/chatsToJson/chats2.json"] );
     console.log(process.pid);
     process.stderr.on('data', function(data) {
         console.log(data.toString());
