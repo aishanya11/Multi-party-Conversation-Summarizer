@@ -120,8 +120,10 @@ async function callName2(req, res) {
         console.log(data.toString());
 		
     } )
-
-    res.render('model');
+    process.on('exit', (code) => {
+        res.render('model');
+      });
+    
     
 }
 
