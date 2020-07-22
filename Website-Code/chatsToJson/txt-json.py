@@ -1,7 +1,7 @@
 import json
-txt_file = "./chats1.txt" 
+txt_file = "/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Website-Code/FRONT END/uploads/sample.txt" 
 output_json = "./chats.json"
-f = open("./chats1.txt","r+")
+f = open(txt_file,"r+")
 chats = f.readlines()[1:]
 print(chats[0])
 timestamps = [s[:19] for s in chats]

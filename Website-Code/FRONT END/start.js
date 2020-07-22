@@ -41,20 +41,41 @@ app.post('/upload-avatar', async (req, res) => {
         } else {
             //Use the name of the input field (i.e. "avatar") to retrieve the uploaded file
             let avatar = req.files.avatar;
-            
-            //Use the mv() method to place the file in upload directory (i.e. "uploads")
+            //let whatsappChat = avatar.data.toString();
             avatar.mv('./uploads/' + avatar.name);
+
+            var spawn = require("child_process").spawn;
+            var process = spawn('python',["/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Website-Code/chatsToJson/txt-json.py"] );
+            process.stderr.on('data', function(data) {
+                console.log(data.toString());
+                res.send({
+                    status: true,
+                    message: 'File is NOT uploaded',
+                    data: {
+                        name: avatar.name,
+                        mimetype: avatar.mimetype,
+                        size: avatar.size
+                    }
+                });
+            } )
+        
+            process.stdout.on('data', function(data) {
+                console.log("yooooooo");
+                res.send({
+                    status: true,
+                    message: 'File is uploaded',
+                    data: {
+                        name: avatar.name,
+                        mimetype: avatar.mimetype,
+                        size: avatar.size
+                    }
+                });
+            } )
+            //Use the mv() method to place the file in upload directory (i.e. "uploads")
+            
             console.log('uploaded file');
             //send response
-            res.send({
-                status: true,
-                message: 'File is uploaded',
-                data: {
-                    name: avatar.name,
-                    mimetype: avatar.mimetype,
-                    size: avatar.size
-                }
-            });
+            
         }
     } catch (err) {
         console.log(req.files);
