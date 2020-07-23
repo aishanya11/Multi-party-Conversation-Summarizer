@@ -36,10 +36,7 @@ app.listen(3000, function() {
 app.post('/upload-avatar', async (req, res) => {
     try {
         if(!req.files) {
-            res.send({
-                status: false,
-                message: 'No file uploaded'
-            });
+            res.sendFile('/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Website-Code/FRONT END/public/index.html');
         } else {
             //Use the name of the input field (i.e. "avatar") to retrieve the uploaded file
             let avatar = req.files.avatar;
@@ -50,28 +47,21 @@ app.post('/upload-avatar', async (req, res) => {
             var process = spawn('python',["../../Website-Code/chatsToJson/txt-json.py", input_file] );
             process.stderr.on('data', function(data) {
                 console.log(data.toString());
-                res.send({
-                    status: true,
-                    message: 'File is NOT uploaded',
-                    data: {
-                        name: avatar.name,
-                        mimetype: avatar.mimetype,
-                        size: avatar.size
-                    }
-                });
+                // res.send({
+                //     status: true,
+                //     message: 'File is NOT uploaded',
+                //     data: {
+                //         name: avatar.name,
+                //         mimetype: avatar.mimetype,
+                //         size: avatar.size
+                //     }
+                // });
+                res.sendFile('/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Website-Code/FRONT END/public/index.html');
             } )
         
             process.stdout.on('data', function(data) {
                 console.log("TEXT TO JSON CONVERSION DONE!!");
-                res.send({
-                    status: true,
-                    message: 'File is uploaded',
-                    data: {
-                        name: avatar.name,
-                        mimetype: avatar.mimetype,
-                        size: avatar.size
-                    }
-                });
+                res.sendFile('/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Website-Code/FRONT END/public/index.html');
             } )
             //Use the mv() method to place the file in upload directory (i.e. "uploads")
             
