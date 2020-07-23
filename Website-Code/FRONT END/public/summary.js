@@ -1,33 +1,27 @@
-
-
-    window.onload = function WindowLoad(event) {
-        // console.log("data" + this.data);
-        var n = 0;
-        $.ajax({
-
-            url:'/abc6',
-            type: 'GET',
-            success:function(res){
-                console.log(res); 
-                window.alert("lets");
-                n = res.data; 
-                console.log("No : " + n);  
-                var text = "";
-                for (let step = 0; step < n; step++) {
-                  // text +="<p";
-                  text += "\n\nSUMMARY : "+ (step+1).toString() + " : \n";
-                  text +=res.arr_data[step];
-                  text +="\n\n";
-                  // text += "</p>";
-                }
-                // text += res.arr_data[0]
-                document.getElementById('test').innerHTML = text;
-                               
-            }});
-        
-        
-        
-    }
+window.onload = function WindowLoad(event) {
+  var n = 0;
+  $.ajax({
+    url:'/abc6',
+    type: 'GET',
+    success:function(res){
+      console.log(res); 
+      window.alert("lets");
+      n = res.data; 
+      console.log("No : " + n);  
+      var text = `<div class = "row">`;
+      for (let step = 0; step < n; step++) {
+        text += `<hr><div class = "row"><div class = "col l6"><div class="card-panel  grey lighten-2"><span class="black-text"> Para ${(step+1).toString()} :  ${res.data_object[step].para}</span></div></div>`;
+        text += `<div class = "col l6"><div class="card-panel  grey lighten-3"><span class="black-text">SUMMARY ${(step+1).toString()} :  ${res.data_object[step].summary}</span></div></div></div>`;
+      }
+      text += `</div>`;
+    document.getElementById('test').innerHTML = text; 
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.collapsible');
+      var instances = M.Collapsible.init(elems, options);
+    });               
+  }});
+}
 
 
     

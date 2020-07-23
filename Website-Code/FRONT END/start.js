@@ -104,14 +104,15 @@ app.get('/abc6', callName6);
 function callName6(req, res) {
     console.log("in abc6");
     var fs = require('fs');
-    var data_to_sent =[];
-    var filepaths = [];
+    var data_object =[];
     for(let i=0;i<no_topics_input_chat;i++){
-        let paths = "../../Text-Summarization/output-"+(i).toString()+".txt"
-        let data_sent = fs.readFileSync(paths, 'utf8');
-        data_to_sent.push(data_sent.toString())
+        let path1 = "../../Topic-Detection/Topics/topic-"+(i).toString()+".txt";
+        let path2 = "../../Text-Summarization/output-"+(i).toString()+".txt";
+        let para = fs.readFileSync(path1, 'utf8');
+        let summary = fs.readFileSync(path2, 'utf8');
+        data_object.push({para : para.toString(), summary: summary.toString()});
     }
-    res.status(200).send({data : no_topics_input_chat,arr_data : data_to_sent});
+    res.status(200).send({data : no_topics_input_chat,data_object : data_object});
 }
 
 
@@ -133,12 +134,6 @@ async function callName3(req, res) {
         console.log(data.toString());
 		
     } )
-
-    
-
-    
-    
-
 
     process.on('exit', (code) => {
            console.log("summary script chal gayi poori");
@@ -177,6 +172,3 @@ async function callName4(req, res) {
       });
       
 }
-
-
-// save code as start.js

@@ -6,14 +6,28 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <style>
-    
-     
+     #row1{
+        height: 200px;
+      }
     </style>
   </head>
 <body>
-    <center> <h1>summary created for {{data}} topics</h1> </center>
-        
-    <div id="test"> </div>
+    {{!-- <center> <h1>summary created for {{data}} topics</h1> </center> --}}
+    <div>
+      <div class="row" >
+        <div class="col l12">
+          <div class="card grey lighten-3">
+            <div class="card-content black-text" id = "row1">
+              <center>
+                <span><h3>Generated Summaries for {{data}} Topics</h3></span>
+              </center>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="test">
+      </div>
+    </div>
      
 
 </body>
