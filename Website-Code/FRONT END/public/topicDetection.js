@@ -5,7 +5,7 @@
         var n = 0;
         $.ajax({
 
-            url:'/abc6',
+            url:'/abc7',
             type: 'GET',
             success:function(res){
                 console.log(res); 
@@ -15,12 +15,12 @@
                 var text = "";
                 for (let step = 0; step < n; step++) {
                   // text +="<p";
-                  text += "\n\nSUMMARY : "+ (step+1).toString() + " : \n";
+                  text += "\n\nARTICLE "+ (step+1).toString() + " : \n";
                   text +=res.arr_data[step];
                   text +="\n\n";
                   // text += "</p>";
                 }
-                // text += res.arr_data[0]
+                
                 document.getElementById('test').innerHTML = text;
                                
             }});

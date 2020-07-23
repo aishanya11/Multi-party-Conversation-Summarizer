@@ -47,7 +47,6 @@ app.post('/upload-avatar', async (req, res) => {
             avatar.mv('./uploads/' + avatar.name);
             input_file = avatar.name
             var spawn = require("child_process").spawn;
-            // var process = spawn('python',["/Users/riyak/STUDY/BTP-2/git/Multi-party-Conversation-Summarizer/Website-Code/chatsToJson/txt-json.py", input_file] );
             var process = spawn('python',["../../Website-Code/chatsToJson/txt-json.py", input_file] );
             process.stderr.on('data', function(data) {
                 console.log(data.toString());
@@ -104,8 +103,17 @@ function callName2(req, res) {
 app.get('/abc6', callName6);
 function callName6(req, res) {
     console.log("in abc6");
-    res.status(200).send({data : no_topics_input_chat});
+    var fs = require('fs');
+    var data_to_sent =[];
+    var filepaths = [];
+    for(let i=0;i<no_topics_input_chat;i++){
+        let paths = "../../Text-Summarization/output-"+(i).toString()+".txt"
+        let data_sent = fs.readFileSync(paths, 'utf8');
+        data_to_sent.push(data_sent.toString())
+    }
+    res.status(200).send({data : no_topics_input_chat,arr_data : data_to_sent});
 }
+
 
 app.get('/summary', callName3);
 
@@ -125,9 +133,16 @@ async function callName3(req, res) {
         console.log(data.toString());
 		
     } )
+
+    
+
+    
+    
+
+
     process.on('exit', (code) => {
            console.log("summary script chal gayi poori");
-           res.status(200).send({data : no_topics_input_chat});
+           res.status(200).send({data: no_topics_input_chat});
     });
     
     
