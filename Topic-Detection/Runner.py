@@ -15,7 +15,7 @@ class TestRunner:
         self.messages = parser.getMessages()
         self.tokenizer = MessageTokenizer()
         windowSize = 3
-        cosineSimilarityThreshold = 0.2
+        cosineSimilarityThreshold = 0.9
         segmenter = ConversationSegmenter(
             self.messages, windowSize, cosineSimilarityThreshold, self.tokenizer)
         topics = segmenter.segment()
@@ -23,38 +23,29 @@ class TestRunner:
         
 
     def report(self, topics):
-        files = glob.glob('/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Topic-Detection/Topics/*.txt')
+        files = glob.glob('../../Topic-Detection/Topics/*.txt')
+        # files = glob.glob('../Topic-Detection/Topics/*.txt')
         for f in files:
             os.remove(f)
         idGroups = []
-        # print("============================= detailed ==========================")
         rr=0
         for topic in topics:
             rr+=1
-            # print("== Topic ==")
             idGroup = []
             for (message, reason) in zip(topic.getMessages(), topic.getReasons()):
                 idGroup.append(message.getID())
-            #     print("\n\t------ id: \t" , str(message.getID()) , "\t" + reason)
-            #     print("" , message.getText().encode('utf-8'))
-            # print("\n")
             idGroups.append(idGroup)
 
-        # print("=================================================================")
-
-        # print("============================= short =============================")
         for ind, topic in enumerate(topics):
-            # print("== Topic ==")
-            arg1 = "/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Topic-Detection/Topics/topic-" + str(ind) + ".txt"
+            # When running from the server
+            arg1 = "../../Topic-Detection/Topics/topic-" + str(ind) + ".txt"
+            # When running from terminal
+            # arg1 = "../Topic-Detection/Topics/topic-" + str(ind) + ".txt"
             file = open(arg1,"w")
             for message in topic.getMessages():
-                # print(str(message.getID()) , ":\t" , message.getText().encode('utf-8'))
                 file.write(message.getText())
-            # print("\n")
             file.close()
         print(rr)
-        # print(len(idGroups))
-        #print(idGroups)
 
 
 def main(json_input):

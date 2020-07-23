@@ -459,7 +459,14 @@ def test_rbm(dataset,learning_rate=0.1, training_epochs=5, batch_size=4,n_chains
     # print(number_of_test_samples)
 
     # pick random test examples, with which to initialize the persistent chain
-    test_idx = rng.randint(number_of_test_samples - n_chains)
+
+    # Riya : code modified to solve low>=high error 
+    value_given = number_of_test_samples - n_chains
+    if(value_given<0):
+        value_given = -1*(value_given)
+
+
+    test_idx = rng.randint(value_given)
     persistent_vis_chain = theano.shared(
         numpy.asarray(
             test_set_x[test_idx:test_idx + n_chains],
