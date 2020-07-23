@@ -1,28 +1,45 @@
-$('#chatLogInp').on('click',function(){
-  //document.getElementById("myFile").value
-  $.get({url:'/abc',success:function(){
-	alert('recording done');
-    window.location='/';
-	
-  }
-})
 
-});
+$('#summary').on('click',function(){
+  $.get({url:'/summary',success:function(res){
+    console.log(res);
+    window.alert("summary generation complete, show summary?");
 
+    $.get(
+      {
+        url:`/abc2`,success:function(res){
+          console.log('abc2 get req complete');
+          console.log(res);
+          //window.alert("lets see");
+          window.location=`/abc2`;
+          }
+      });
 
-$('#local').on('click',function(){
-  $.get({url:'/def',success:function(){
-    window.location='/def';
-  }
-})
-});
-
-$('#model').on('click',function(){
-  $.get({url:'/model',success:function(){
-    window.location='/model';
   }
 })
 });
+
+$('#detectTopic').on('click',function(){
+  $.ajax({
+
+    url:'/topicDetection',
+    type: 'POST',
+    success:function(res){
+      console.log(res);
+      window.alert("topic detection complete");
+      $.get(
+        {
+          url:`/abc`,success:function(res){
+            console.log('abc get req complete');
+            console.log(res);
+            //window.alert("lets see");
+            window.location=`/abc`;
+            }
+        });
+        
+      }});
+});
+
+
 
 
 

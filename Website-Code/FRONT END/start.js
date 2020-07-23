@@ -23,8 +23,8 @@ app.use('/',express.static('public'));
 
 app.set('view engine','hbs' );
 app.set('views','views');
-app.use('/def',express.static('views')); 
-app.use('/model',express.static('views'));
+app.use('/topicDetection',express.static('views')); 
+app.use('/summary',express.static('views'));
 
 
 
@@ -90,24 +90,21 @@ app.post('/upload-avatar', async (req, res) => {
 });
 
 app.get('/abc', callName);
-
 function callName(req, res) {
-
-    console.log(req.body);
-    //var spawn = require("child_process").spawn;
-
-  
-    //var process = spawn('python',["./script_audio.py"] );
-
-   
-    //process.stdout.on('data', function(data) {
-      //  res.send(data.toString());
-   // } )
+    
+    res.render('topicDetection.hbs',{data:no_topics_input_chat});
 }
 
-app.get('/def', callName2);
+app.get('/abc2', callName2);
+function callName2(req, res) {
+    
+    res.render('summary.hbs',{data:no_topics_input_chat});
+}
 
-async function callName2(req, res) {
+app.get('/summary', callName3);
+
+async function callName3(req, res) {
+    console.log("summary route pe aagaye hai");
 	//console.log(req);
     //console.log(res);
     var spawn = require("child_process").spawn;
@@ -123,16 +120,19 @@ async function callName2(req, res) {
 		
     } )
     process.on('exit', (code) => {
-        res.render('model');
-      });
+           console.log("summary script chal gayi poori");
+           res.status(200).send({data : no_topics_input_chat});
+    });
     
     
 }
 
-app.get('/model', callName3);
+app.post('/topicDetection', callName4);
 
-async function callName3(req, res) {
-    console.log("model route pe aagaye hai");
+async function callName4(req, res) {
+    
+    console.log("topicDetection route pe aagaye hai");
+    
     var spawn = require("child_process").spawn;
     const process = spawn('python',["../../Topic-Detection/Runner.py","../../Website-Code/chatsToJson/chats2.json"] );
     console.log(process.pid);
@@ -142,13 +142,19 @@ async function callName3(req, res) {
     } )
 
     process.stdout.on('data', function(data) {
-        console.log("TOPIC DETECTION DONE!!");
+        //console.log("TOPIC DETECTION DONE!!");
 		data = data.toString();
         console.log("no. of topics identified:"); 
         console.log(data);
         no_topics_input_chat = Number(data);
     } )
-    //res.render('model');
+    
+    process.on('exit', (code) => {
+        console.log("topic detection script chal gayi poori");
+        //res.render('topicDetection.hbs');
+        res.status(200).send({data : no_topics_input_chat});
+      });
+      
 }
 
 
