@@ -10,8 +10,8 @@ window.onload = function WindowLoad(event) {
       console.log("No : " + n);  
       var text = `<div class = "row">`;
       for (let step = 0; step < n; step++) {
-        text += `<hr><div class = "row"><div class = "col l6"><div class="card-panel  grey lighten-2"><span class="black-text"> PARA ${(step+1).toString()} :  ${res.data_object[step].para}</span></div></div>`;
-        text += `<div class = "col l6"><div class="card-panel  grey lighten-3"><span class="black-text">SUMMARY ${(step+1).toString()} :  ${res.data_object[step].summary}</span></div></div></div>`;
+        text += `<hr><div class = "row"><div class = "col l6"><div class="card-panel  blue-grey"><span class="white-text"> PARA ${(step+1).toString()} :  ${res.data_object[step].para}</span></div></div>`;
+        text += `<div class = "col l6"><div class="card-panel"  style="background:#26a69a"><span class="white-text">SUMMARY ${(step+1).toString()} :  ${res.data_object[step].summary}</span></div></div></div>`;
       }
       text += `</div>`;
     document.getElementById('test').innerHTML = text; 

@@ -36,7 +36,7 @@ app.listen(3000, function() {
 app.post('/upload-avatar', async (req, res) => {
     try {
         if(!req.files) {
-            res.sendFile('/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Website-Code/FRONT END/public/index.html');
+            res.sendFile('/Users/riyak/STUDY/BTP-2/git/Multi-party-Conversation-Summarizer/Website-Code/FRONT END/public/index.html');
         } else {
             //Use the name of the input field (i.e. "avatar") to retrieve the uploaded file
             let avatar = req.files.avatar;
@@ -56,12 +56,12 @@ app.post('/upload-avatar', async (req, res) => {
                 //         size: avatar.size
                 //     }
                 // });
-                res.sendFile('/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Website-Code/FRONT END/public/index.html');
+                res.sendFile('/Users/riyak/STUDY/BTP-2/git/Multi-party-Conversation-Summarizer/Website-Code/FRONT END/public/index.html');
             } )
         
             process.stdout.on('data', function(data) {
                 console.log("TEXT TO JSON CONVERSION DONE!!");
-                res.sendFile('/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Website-Code/FRONT END/public/index.html');
+                res.sendFile('/Users/riyak/STUDY/BTP-2/git/Multi-party-Conversation-Summarizer/Website-Code/FRONT END/public/index.html');
             } )
             //Use the mv() method to place the file in upload directory (i.e. "uploads")
             
