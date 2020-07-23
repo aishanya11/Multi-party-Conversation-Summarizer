@@ -101,6 +101,12 @@ function callName2(req, res) {
     res.render('summary.hbs',{data:no_topics_input_chat});
 }
 
+app.get('/abc6', callName6);
+function callName6(req, res) {
+    console.log("in abc6");
+    res.status(200).send({data : no_topics_input_chat});
+}
+
 app.get('/summary', callName3);
 
 async function callName3(req, res) {

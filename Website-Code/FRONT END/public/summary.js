@@ -1,12 +1,30 @@
 
 
     window.onload = function WindowLoad(event) {
-        const fs = require('fs') 
-  
-        fs.readFile('/Users/aishanyasingh/Desktop/BTP2/Multi-party-Conversation-Summarizer/Text-Summarization/output-0.txt', (err, data) => { 
-        if (err) throw err; 
-        document.getElementById('test').innerHTML = data.toString();
-        console.log(data.toString());
+        var n = 0;
+        $.ajax({
 
-    }) 
+            url:'/abc6',
+            type: 'GET',
+            success:function(res){
+              console.log(res); 
+              window.alert("lets");
+              n = res.data; 
+              console.log(n);      
+            var text = "yopopopo";
+            for (let step = 0; step < n; step++) {
+            //read from file and append in text 
+            //temp = readfile()
+            //text = text+" "+temp
+             }
+        
+            document.getElementById('test').innerHTML = text;
+                               
+              }});
+        
+        
+        
     }
+
+
+    
